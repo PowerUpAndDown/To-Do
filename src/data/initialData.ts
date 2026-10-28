@@ -1,0 +1,181 @@
+import { TodoList, Suggestion } from '../types/todo';
+
+export const INITIAL_LISTS: TodoList[] = [
+  {
+    id: 'renovering-1',
+    titel: 'Renovering',
+    beskrivning: 'Badrum',
+    icon: '🛁',
+    färg: '#a855f7', // purple
+    datum: '2026-11-15',
+    tid: '08:00',
+    butik: 'Bauhaus',
+    plats: 'Hemma',
+    priorityRank: 1,
+    items: [
+      { id: 'r1', text: 'Rivning av gamla kakelplattor', antal: '1 rum', uppskattadTid: '8/h', completed: true },
+      { id: 'r2', text: 'Montera fuktspärr och tätskikt', antal: '20 kvm', uppskattadTid: '12/h', completed: false },
+      { id: 'r3', text: 'Lägga nytt golvklinker', antal: '45 st', uppskattadTid: '10/h', completed: false },
+      { id: 'r4', text: 'Installera golvvärme', antal: '1 kit', uppskattadTid: '4/h', completed: false },
+      { id: 'r5', text: 'Sätta upp vitt kakel på väggar', antal: '120 st', uppskattadTid: '8/h', completed: false },
+      { id: 'r6', text: 'Montera kommod och dubbla tvättställ', antal: '1 st', uppskattadTid: '3/h', completed: false },
+      { id: 'r7', text: 'Koppla in blandare & rördragning', antal: '2 st', uppskattadTid: '3/h', completed: false },
+    ],
+  },
+  {
+    id: 'resa-2',
+    titel: 'Resa',
+    beskrivning: 'Grekland',
+    icon: '🇬🇷',
+    färg: '#eab308', // yellow
+    datum: '2026-06-12',
+    tid: '06:30',
+    butik: 'Apoteket',
+    plats: 'Arlanda',
+    priorityRank: 2,
+    items: [
+      { id: 're1', text: 'Kolla passens giltighetstid', antal: '4 st', uppskattadTid: '1/h', completed: true },
+      { id: 're2', text: 'Boka hyrbil på Kreta', antal: '1 st', uppskattadTid: '2/h', completed: false },
+      { id: 're3', text: 'Köpa solskyddsfaktor 50 & aftersun', antal: '3 st', uppskattadTid: '1/h', completed: false },
+      { id: 're4', text: 'Packa badkläder & snorklar', antal: '4 pers', uppskattadTid: '3/h', completed: false },
+      { id: 're5', text: 'Växla lite kontanter till tavernor', antal: '200 €', uppskattadTid: '1/h', completed: false },
+      { id: 're6', text: 'Checka in på flyget 24h innan', antal: '1 app', uppskattadTid: '30m', completed: false },
+    ],
+  },
+  {
+    id: 'julklappar-3',
+    titel: 'Julklappar',
+    beskrivning: 'Inköpslista',
+    icon: '🎄',
+    färg: '#f43f5e', // rose/pink
+    datum: '2026-12-24',
+    tid: '14:00',
+    butik: 'Åhléns',
+    plats: 'Gallerian',
+    priorityRank: 3,
+    items: [
+      { id: 'j1', text: 'Stickad ylletröja till Mamma', antal: '1 st', uppskattadTid: '2/h', completed: false },
+      { id: 'j2', text: 'Trådlösa hörlurar till Pappa', antal: '1 st', uppskattadTid: '1/h', completed: false },
+      { id: 'j3', text: 'Brädspel: Catan städer & riddare', antal: '1 st', uppskattadTid: '1/h', completed: false },
+      { id: 'j4', text: 'Mysiga doftljus gran/kanel', antal: '3 st', uppskattadTid: '1/h', completed: false },
+      { id: 'j5', text: 'Omslagspapper, snören och juletiketter', antal: '5 rullar', uppskattadTid: '1/h', completed: false },
+    ],
+  },
+  {
+    id: 'tacokvall-4',
+    titel: 'Tacokväll',
+    beskrivning: 'Inköpslista',
+    icon: '🌮',
+    färg: '#84cc16', // sage / lime green
+    datum: 'Idag',
+    tid: '17:30',
+    butik: 'ICA Kvantum',
+    plats: 'Centrum',
+    items: [
+      { id: 't1', text: 'Nötfärs 500g', antal: '2 pkt', uppskattadTid: '10m', completed: false },
+      { id: 't2', text: 'Tacoskal och mjuka tortillabröd', antal: '3 pkt', uppskattadTid: '5m', completed: false },
+      { id: 't3', text: 'Mogna avokador för guacamole', antal: '4 st', uppskattadTid: '5m', completed: false },
+      { id: 't4', text: 'Riven cheddar & salsa chunky medium', antal: '2 st', uppskattadTid: '5m', completed: false },
+      { id: 't5', text: 'Creme fraiche & färsk koriander', antal: '2 bägare', uppskattadTid: '5m', completed: false },
+      { id: 't6', text: 'Lime och rödlök', antal: '3 st', uppskattadTid: '5m', completed: false },
+    ],
+  },
+  {
+    id: 'lia-5',
+    titel: 'Inför LIA 2',
+    beskrivning: 'Vill göra',
+    icon: '👩‍💻',
+    färg: '#38bdf8', // sky blue
+    datum: '25/1-27',
+    tid: '09:00',
+    butik: '',
+    plats: 'Distans / Kontor',
+    items: [
+      { id: 'l1', text: 'Lära mig mer om toyota', antal: '', uppskattadTid: '1/h', completed: false },
+      { id: 'l2', text: 'Lära mig Japanska', antal: '', uppskattadTid: '1/h', completed: false },
+      { id: 'l3', text: 'Uppdatera min portfolio med senaste projekt', antal: '1 st', uppskattadTid: '2/h', completed: false },
+      { id: 'l4', text: 'Förbereda frågor till handledaren', antal: '5 st', uppskattadTid: '30m', completed: false },
+    ],
+  },
+];
+
+export const SUGGESTIONS: Suggestion[] = [
+  {
+    id: 'to-due-list',
+    titel: 'Ska vi skapa en: To-Due List',
+    undertitel: 'Förslag:',
+    beskrivning: 'När allt på listan egentligen skulle ha varit klart igår.',
+    icon: '⏰',
+    färg: '#22c55e',
+    defaultItems: [
+      { text: 'Svara på det där mailet från förra veckan', antal: '1 st', uppskattadTid: '15m' },
+      { text: 'Boka tid för bilbesiktning', antal: '1 st', uppskattadTid: '10m' },
+      { text: 'Rensa källarförrådet', antal: '1 rum', uppskattadTid: '3/h' },
+      { text: 'Lämna tillbaka biblioteksboken', antal: '2 st', uppskattadTid: '30m' },
+    ],
+  },
+  {
+    id: 'helg-mys',
+    titel: 'Ska vi planera: Helgens myslista',
+    undertitel: 'Förslag:',
+    beskrivning: 'Bara roliga och avkopplande saker att se fram emot.',
+    icon: '☕',
+    färg: '#ec4899',
+    defaultItems: [
+      { text: 'Baka färska surdegsfrallor', antal: '8 st', uppskattadTid: '1/h' },
+      { text: 'Långpromenad i skogen med varm choklad', antal: '1 tur', uppskattadTid: '2/h' },
+      { text: 'Se en ny filmserie i soffan', antal: '2 avsnitt', uppskattadTid: '2/h' },
+    ],
+  },
+  {
+    id: 'veckohandling',
+    titel: 'Ska vi förbereda: Veckans Inköp',
+    undertitel: 'Förslag:',
+    beskrivning: 'Fyll på skafferiet och spara tid resten av veckan.',
+    icon: '🛒',
+    färg: '#f59e0b',
+    defaultItems: [
+      { text: 'Kaffe, te & havremjölk', antal: '3 st', uppskattadTid: '10m' },
+      { text: 'Frukt och grönsaker till veckans matlådor', antal: '1 korg', uppskattadTid: '15m' },
+      { text: 'Bröd och pålägg', antal: '4 st', uppskattadTid: '10m' },
+    ],
+  },
+];
+
+export const INITIAL_OLD_LISTS: TodoList[] = [
+  {
+    id: 'old-1',
+    titel: 'Födelsedagsfest för Ella',
+    beskrivning: 'Festplanering',
+    icon: '🎂',
+    färg: '#ec4899',
+    datum: '2026-09-18',
+    tid: '18:00',
+    butik: 'Partyland',
+    plats: 'Festlokalen',
+    completed: true,
+    completedAt: '18 sep 2026',
+    items: [
+      { id: 'o1', text: 'Beställa tårta från bageriet', antal: '1 st', uppskattadTid: '20m', completed: true },
+      { id: 'o2', text: 'Skicka inbjudningskort', antal: '25 st', uppskattadTid: '1/h', completed: true },
+      { id: 'o3', text: 'Köpa ballonger & girlanger', antal: '1 påse', uppskattadTid: '30m', completed: true },
+    ],
+  },
+  {
+    id: 'old-2',
+    titel: 'Höstrensning i trädgården',
+    beskrivning: 'Hem & Trädgård',
+    icon: '🍂',
+    färg: '#eab308',
+    datum: '2026-10-04',
+    tid: '10:00',
+    butik: 'Blomsterlandet',
+    plats: 'Trädgården',
+    completed: true,
+    completedAt: '4 okt 2026',
+    items: [
+      { id: 'o4', text: 'Kratta löv på gräsmattan', antal: '4 säckar', uppskattadTid: '2/h', completed: true },
+      { id: 'o5', text: 'Tömma regntunnor & stänga av utekran', antal: '2 st', uppskattadTid: '30m', completed: true },
+    ],
+  },
+];
